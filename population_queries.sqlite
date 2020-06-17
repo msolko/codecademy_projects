@@ -1,0 +1,36 @@
+SELECT countries.continent, COUNT(*)
+  FROM countries
+  WHERE countries.continent = 'Africa';
+SELECT countries.continent, SUM(population_years.population)
+  FROM countries
+    JOIN population_years
+      ON countries.id = population_years.country_id
+  WHERE countries.continent = 'Oceania'
+    AND population_years.year = 2005;
+SELECT countries.continent, AVG(population_years.population)
+  FROM countries
+    JOIN population_years
+      ON countries.id = population_years.country_id
+  WHERE countries.continent = 'South America'
+    AND population_years.year = 2003;
+SELECT countries.name, MIN(population_years.population)
+  FROM countries
+    JOIN population_years
+      ON countries.id = population_years.country_id
+  WHERE population_years.year = 2007;
+SELECT countries.name, AVG(population_years.population)
+  FROM countries
+    JOIN population_years
+      ON countries.id = population_years.country_id
+  WHERE countries.name = 'Poland';
+SELECT countries.name
+  FROM countries
+  WHERE countries.name like '% The' 
+    or countries.name like 'The %';
+SELECT countries.continent, SUM(population_years.population)
+  FROM countries
+  JOIN population_years
+    ON countries.id = population_years.country_id
+  WHERE population_years.year = 2010
+  GROUP BY 1
+  ORDER BY 2 DESC;
